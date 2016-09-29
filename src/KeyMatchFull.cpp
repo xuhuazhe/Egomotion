@@ -67,7 +67,7 @@ int main(int argc, char **argv) {
     }
 
     list_in = argv[1];
-    ratio = 0.6;
+    ratio = 0.8;
     file_out = argv[2];
 
     int window_radius = -1;

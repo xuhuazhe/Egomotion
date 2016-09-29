@@ -335,7 +335,7 @@ void WriteModelsProjections(ModelMap &models, int num_images,
 #if 0
 static void FixPEdges(int num_images, ModelMap &models, PEdgeMap &p_edges)
 {
-    const double MIN_ANGLE = 1.5;
+    const double MIN_ANGLE = 0.3;
     
     for (int i = 0; i < num_images; i++) {
         for (int j = i+1; j < num_images; j++) {

@@ -4,6 +4,9 @@
 *.so
 *.dll
 *.exe
+*.jpg
+*.png
+*.ts
 
 # emacs temp files
 *~

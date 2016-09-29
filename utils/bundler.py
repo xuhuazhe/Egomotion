@@ -24,7 +24,7 @@ import argparse
 import gzip
 import os
 import sys
-import Image
+#import Image
 import glob
 import subprocess
 import tempfile
@@ -399,7 +399,11 @@ def extract_focal_length(images=[], scale=1.0, verbose=False):
 
         if (img_width==0 or img_height==0 or focalN==0 or ccd_width==0):
             if verbose: print "  [Could not determine pixel focal length]"
-            continue
+            img_width = 1280
+            img_height = 720
+            focal_length = 3.55
+            ccd_width = 4.8
+            #continue
 
         # Compute Focal Length in Pixels
         ret[image] = img_width * (focal_length / ccd_width) * scale
@@ -490,7 +494,11 @@ def match_images(key_files, matches_file, verbose=False):
     with tempfile.NamedTemporaryFile(delete=False) as fp:
         for key in key_files:
             fp.write(key + '\n')
+            #f=open('name.txt','a')
+            #f.write('%s\n' % key)
+            print key
         keys_file = fp.name
+        #f.close()
 
     # Add lib folder to LD_LIBRARY_PATH
     env = dict(os.environ)
@@ -601,7 +609,10 @@ def run_bundler(images=[], verbose=False, parallel=True):
     # Extract SIFT features from images
     if verbose: print "[- Extracting keypoints -]"
     key_files = sift_images(images, parallel=parallel, verbose=verbose)
-
+    #key_filename = glob.glob("/home/hxu/Reconstruction/bundler_sfm/data/3persec/*.[gG][zZ]") 
+    #print key_filename
+    #key_files = [x[0:-3] for x in key_filename ]
+    #print key_files
     # Match images
     if verbose: print "[- Matching keypoints (this can take a while) -]"
     matches_file = "matches.init.txt"
@@ -621,7 +632,8 @@ def run_bundler(images=[], verbose=False, parallel=True):
             constrain_focal=True,
             constrain_focal_weight=0.0001,
             estimate_distortion=True,
-            run_bundle=True)
+            run_bundle=True,
+            ray_angle_threshold=1)
 
     if verbose: print "[- Done -]"
 

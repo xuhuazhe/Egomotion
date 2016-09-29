@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Bundler User's Manual
 ---------------------
 written by Noah Snavely (snavely@cs.cornell.edu)
@@ -395,3 +396,6 @@ Noah Snavely at snavely@cs.cornell.edu.
     the Levenberg-Marquardt Algorithm.  Tech.  Rep. 340, Inst. of
     Computer Science-FORTH, Heraklion, Crete, Greece. Available from
     http://www.ics.forth.gr/~lourakis/sba.
+=======
+# Egomotion
+>>>>>>> 8ece1ed7ab2adc32c193006d20c256128ef129a1
