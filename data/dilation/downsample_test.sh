@@ -1,15 +1,14 @@
 export DILATION="/home/hxu/Reconstruction/bundler_sfm/data/dilation"
 start=$SECONDS
-for i in /home/hxu/Reconstruction/bundler_sfm/data/videos/testdir/downsample/
-do
-export DATASETS=$i
+#export CUDA_VISIBLE_DEVICES=$2
+export DATASETS=$1
 python ${DILATION}/test.py joint \
---work_dir ${i}output \
+--work_dir $1output \
 --image_list $DATASETS/images.txt \
 --weights $DILATION/pretrained/dilation10_cityscapes.caffemodel \
 --layers 10 \
 --classes 19 \
---input_size 732 \
---gpu 0
-done
+--input_size 610 \
+--gpu $2
 duration=$(( SECONDS - start ))
+echo $duration
